@@ -1,0 +1,31 @@
+
+first name should not be empty
+last name should not be empty
+email id should not be empty
+age should not be empty
+mobile number should not be empty
+password should not be empty and have atleast 8 charaters
+
+email should be valid
+
+data type 
+first name = string
+last name = string
+emailid = string
+age = number
+mobile number = number
+password = string
+error variables for above data = boolean
+eg.firstNameErr=false
+
+ 
+declare variables and data types of the variables 
+declare methods which will update variable values
+pass values to corresponding html element
+update value on events => onChange 
+handle validations 
+show error message on screen if field has error otherwise hide it
+
+onClick 
+
+
