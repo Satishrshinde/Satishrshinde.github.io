@@ -1,0 +1,15 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+.container {
+  max-width: 800px;
+}
+
+.form-group {
+  padding: 10px 0;
+}
