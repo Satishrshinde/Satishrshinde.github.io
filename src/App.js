@@ -57,14 +57,6 @@ function App() {
     if (!isValidEmail) {
       console.log("invalid email");
     }
-    //     first name should not be empty
-    // last name should not be empty
-    // email id should not be empty
-    // age should not be empty
-    // mobile number should not be empty
-    // password should not be empty and have atleast 8 charaters
-
-    // email should be valid
   }
 
   return (
