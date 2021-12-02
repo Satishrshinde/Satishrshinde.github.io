@@ -26,6 +26,4 @@ update value on events => onChange
 handle validations 
 show error message on screen if field has error otherwise hide it
 
-onClick 
-
 
