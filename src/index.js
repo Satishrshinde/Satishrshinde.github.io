@@ -1,13 +1,16 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
-import 'bootstrap/dist/css/bootstrap.min.css';
-import App from "./App";
+import "./App.css";
+
+//import Signup from "./signup";
+import Login from "./login";
 import reportWebVitals from "./reportWebVitals";
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Login />
   </React.StrictMode>,
   document.getElementById("root")
 );
