@@ -6,8 +6,6 @@ function Login() {
   const [emailidErr, setEmailidErr] = useState(false);
   const [passwordErr, setPasswordErr] = useState(false);
 
-  // add space after sign up button
-
   function validateEmail(email) {
     const re = /\S+@\S+\.\S+/;
     return re.test(email);

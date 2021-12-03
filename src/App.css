@@ -1,15 +1,36 @@
 .App {
   text-align: center;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
 .container {
-  max-width: 800px;
+  max-width: 630px;
 }
 
 .form-group {
   padding: 10px 0;
+}
+.signUpActionWrap,
+.showPasswordWrapper {
+  margin-top: 20px;
+}
+.showPasswordWrapper input {
+  width: 24px;
+  height: 16px;
+}
+.signUpActionWrap .btn-primary {
+  margin-right: 20px;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
 }

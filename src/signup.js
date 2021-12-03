@@ -14,6 +14,9 @@ function Signup() {
   const [mobileNumberErr, setMobileNumberErr] = useState(false);
   const [passwordErr, setPasswordErr] = useState(false);
   const [inputPassword, setInputPassword] = useState("password");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [passwordMatchErr, setPasswordMatchErr] = useState(false);
+
   function resetForm() {
     setFirstName("");
     setLastName("");
@@ -26,6 +29,8 @@ function Signup() {
     setAgeErr(false);
     setMobileNumberErr(false);
     setPasswordErr(false);
+    setConfirmPassword("");
+    setPasswordMatchErr(false);
   }
 
   function showPassword() {
@@ -67,11 +72,15 @@ function Signup() {
     } else {
       setMobileNumberErr(false);
     }
-
     if (password === "" || password.length < 8) {
       setPasswordErr(true);
     } else {
       setPasswordErr(false);
+    }
+    if (password !== confirmPassword) {
+      setPasswordMatchErr(true);
+    } else {
+      setPasswordMatchErr(false);
     }
     const isValidEmail = validateEmail(email);
     if (!isValidEmail) {
@@ -82,9 +91,8 @@ function Signup() {
   }
 
   return (
-    <div className="container text-center">
-      <h1>Registration Form</h1>
-
+    <div className="container">
+      <h1 className="text-center">Registration Form</h1>
       <form>
         <div className="form-group row">
           <label htmlFor="first name" className="col-sm-3 col-form-label">
@@ -149,10 +157,16 @@ function Signup() {
               className="form-control"
               placeholder="your age"
               value={age}
-              onChange={event => setAge(event.target.value)}
+              onChange={event => {
+                if (event.target.value.length > 2) {
+                  event.preventDefault();
+                } else {
+                  setAge(event.target.value);
+                }
+              }}
             />
             {ageErr && (
-              <span className="text-danger">age should not be empty</span>
+              <span className="text-danger">age should not be empty </span>
             )}
           </div>
         </div>
@@ -166,11 +180,18 @@ function Signup() {
               className="form-control"
               placeholder="mobile number"
               value={mobileNumber}
-              onChange={event => setMobileNumber(event.target.value)}
+              onChange={event => {
+                if (event.target.value.length > 10) {
+                  event.preventDefault();
+                } else {
+                  setMobileNumber(event.target.value);
+                }
+              }}
             />
             {mobileNumberErr && (
               <span className="text-danger">
-                mobile number should not be empty{" "}
+                mobile number should not be empty and it should contain only
+                digits
               </span>
             )}
           </div>
@@ -192,16 +213,40 @@ function Signup() {
             {passwordErr && (
               <span className="text-danger">password should be valid</span>
             )}
-            <input type="checkbox" onClick={showPassword} />
-            <span>show password</span>
+            <div className="showPasswordWrapper d-flex align-items-center">
+              <input
+                className="cursor-pointer"
+                type="checkbox"
+                onClick={showPassword}
+              />
+              <span>show password</span>
+            </div>
+          </div>
+        </div>
+
+        <div className="form-group row">
+          <label htmlFor="inputPassword" className="col-sm-3 col-form-label ">
+            Confirm Password
+          </label>
+          <div className="col-sm-9">
+            <input
+              className="form-control"
+              placeholder="Re-enter Password"
+              type="text"
+              value={confirmPassword}
+              onChange={event => setConfirmPassword(event.target.value)}
+            />
+            {passwordMatchErr && (
+              <span className="text-danger">Password should be same </span>
+            )}
           </div>
         </div>
       </form>
-      <div>
-        <button onClick={handleSubmit} className="btn btn-primary">
+      <div className="text-center signUpActionWrap row d-flex justify-content-center">
+        <button onClick={handleSubmit} className="btn btn-primary col-sm-3">
           Sign Up
         </button>
-        <button className="btn btn-warning" onClick={resetForm}>
+        <button className="btn btn-warning col-sm-3" onClick={resetForm}>
           Reset
         </button>
       </div>
