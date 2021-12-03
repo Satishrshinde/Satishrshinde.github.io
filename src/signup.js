@@ -13,6 +13,28 @@ function Signup() {
   const [ageErr, setAgeErr] = useState(false);
   const [mobileNumberErr, setMobileNumberErr] = useState(false);
   const [passwordErr, setPasswordErr] = useState(false);
+  const [inputPassword, setInputPassword] = useState("password");
+  function resetForm() {
+    setFirstName("");
+    setLastName("");
+    setEmail("");
+    setMobileNumber("");
+    setPassword("");
+    setFirstNameErr(false);
+    setLastNameErr(false);
+    setEmailErr(false);
+    setAgeErr(false);
+    setMobileNumberErr(false);
+    setPasswordErr(false);
+  }
+
+  function showPassword() {
+    if (inputPassword === "password") {
+      setInputPassword("text");
+    } else {
+      setInputPassword("password");
+    }
+  }
 
   function validateEmail(email) {
     const re = /\S+@\S+\.\S+/;
@@ -53,7 +75,9 @@ function Signup() {
     }
     const isValidEmail = validateEmail(email);
     if (!isValidEmail) {
-      console.log("invalid email");
+      setEmailErr(true);
+    } else {
+      setEmailErr(false);
     }
   }
 
@@ -158,15 +182,18 @@ function Signup() {
           </label>
           <div className="col-sm-9">
             <input
-              type="password"
+              type={inputPassword}
               className="form-control"
               placeholder="Password"
+              id="passcode"
               value={password}
               onChange={event => setPassword(event.target.value)}
             />
             {passwordErr && (
               <span className="text-danger">password should be valid</span>
             )}
+            <input type="checkbox" onClick={showPassword} />
+            <span>show password</span>
           </div>
         </div>
       </form>
@@ -177,6 +204,9 @@ function Signup() {
           className="btn btn-primary"
         >
           Sign Up
+        </button>
+        <button className="btn btn-warning" onClick={resetForm}>
+          Reset
         </button>
       </div>
     </div>
