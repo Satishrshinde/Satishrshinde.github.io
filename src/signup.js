@@ -176,7 +176,7 @@ function Signup() {
           type="button"
           className="btn btn-primary"
         >
-          Sign up
+          Sign Up
         </button>
       </div>
     </div>
