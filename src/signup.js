@@ -198,11 +198,7 @@ function Signup() {
         </div>
       </form>
       <div>
-        <button
-          onClick={handleSubmit}
-          type="button"
-          className="btn btn-primary"
-        >
+        <button onClick={handleSubmit} className="btn btn-primary">
           Sign Up
         </button>
         <button className="btn btn-warning" onClick={resetForm}>

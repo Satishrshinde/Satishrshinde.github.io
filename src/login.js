@@ -1,20 +1,25 @@
 import React, { useState } from "react";
+
 function Login() {
   const [emailid, setEmailid] = useState("");
   const [password, setPassWord] = useState("");
   const [emailidErr, setEmailidErr] = useState(false);
   const [passwordErr, setPasswordErr] = useState(false);
+
+  // add space after sign up button
+
   function validateEmail(email) {
     const re = /\S+@\S+\.\S+/;
     return re.test(email);
   }
+
   function handleSubmit() {
     if (emailid === "") {
       setEmailidErr(true);
     } else {
       setEmailidErr(false);
     }
-    if (password === "" || password.length < 8) {
+    if (password === "") {
       setPasswordErr(true);
     } else {
       setPasswordErr(false);
@@ -26,6 +31,7 @@ function Login() {
       setEmailidErr(false);
     }
   }
+
   return (
     <div className="container text-left">
       <h1>Log in</h1>
@@ -70,11 +76,7 @@ function Login() {
         </div>
       </form>
       <div className="text-center">
-        <button
-          className="btn btn-primary "
-          type="button"
-          onClick={handleSubmit}
-        >
+        <button className="btn btn-primary " onClick={handleSubmit}>
           Log In
         </button>
       </div>
