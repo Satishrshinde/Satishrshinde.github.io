@@ -1,0 +1,20 @@
+email should not be empty and email should be valid
+password should not be empty and should have atleast 8 charaters
+
+create login button
+create link for forgotten password
+create another button for signup form
+give classnames from bootstrap for css
+
+data type
+email = string 
+password = string
+error variables for above data = boolean
+eg.firstNameErr=false
+
+declare variables and data types of the variables 
+declare methods which will update variable values
+pass values to corresponding html element
+update value on events => onChange 
+handle validations 
+show error message on screen if field has error otherwise hide it
