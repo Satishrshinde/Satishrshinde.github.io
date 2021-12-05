@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 function Login() {
   const [emailid, setEmailid] = useState("");
@@ -34,41 +35,31 @@ function Login() {
     <div className="container text-left">
       <h1>Log in</h1>
       <form>
-        <div class="form-group row">
-          <label for="staticEmail" class="col-sm-3 col-form-label">
-            Email
-          </label>
-          <div class="col-sm-9">
+        <div className="form-group row">
+          <label className="col-sm-3 col-form-label">Email</label>
+          <div className="col-sm-9">
             <input
               type="text"
-              class="form-control-plaintext"
-              placeholder="Emailid"
+              className="form-control"
+              placeholder="Email"
               value={emailid}
               onChange={event => setEmailid(event.target.value)}
             />
-            {emailidErr && (
-              <span className="text-danger text-left posAbsolute">
-                Invalid email
-              </span>
-            )}
+            {emailidErr && <span className="text-danger text-left posAbsolute">Invalid email</span>}
           </div>
         </div>
-        <div class="form-group row">
-          <label for="inputPassword" class="col-sm-3 col-form-label">
-            Password
-          </label>
-          <div class="col-sm-9">
+        <div className="form-group row">
+          <label className="col-sm-3 col-form-label">Password</label>
+          <div className="col-sm-9">
             <input
               type="password"
-              class="form-control"
+              className="form-control"
               placeholder="Password"
               value={password}
               onChange={event => setPassWord(event.target.value)}
             />
             {passwordErr && (
-              <span className="text-danger text-left posAbsolute">
-                invalid password
-              </span>
+              <span className="text-danger text-left posAbsolute">invalid password</span>
             )}
           </div>
         </div>
@@ -77,6 +68,9 @@ function Login() {
         <button className="btn btn-primary " onClick={handleSubmit}>
           Log In
         </button>
+        <p>
+          Create New Account? <Link to="/signup">Sign up</Link>
+        </p>
       </div>
     </div>
   );

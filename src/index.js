@@ -1,21 +1,28 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Signup from "./signup";
+import Login from "./login";
+import Home from "./home";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
 import "./App.css";
 
-//import Signup from "./signup";
-import Login from "./login";
-import reportWebVitals from "./reportWebVitals";
+const Routing = () => {
+  return (
+    <Router>
+      <Routes>
+        <Route exact path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+      </Routes>
+    </Router>
+  );
+};
 
 ReactDOM.render(
   <React.StrictMode>
-    <Login />
+    <Routing />
   </React.StrictMode>,
   document.getElementById("root")
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
