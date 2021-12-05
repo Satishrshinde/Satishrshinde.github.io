@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 function Signup() {
   const [firstName, setFirstName] = useState("");
@@ -21,6 +22,7 @@ function Signup() {
     setFirstName("");
     setLastName("");
     setEmail("");
+    setAge("");
     setMobileNumber("");
     setPassword("");
     setFirstNameErr(false);
@@ -106,11 +108,7 @@ function Signup() {
               value={firstName}
               onChange={event => setFirstName(event.target.value)}
             />
-            {firstNameErr && (
-              <span className="text-danger">
-                first name should not be empty
-              </span>
-            )}
+            {firstNameErr && <span className="text-danger">first name should not be empty</span>}
           </div>
         </div>
         <div className="form-group row">
@@ -125,9 +123,7 @@ function Signup() {
               value={lastName}
               onChange={event => setLastName(event.target.value)}
             />
-            {lastNameErr && (
-              <span className="text-danger">Last name should not be empty</span>
-            )}
+            {lastNameErr && <span className="text-danger">Last name should not be empty</span>}
           </div>
         </div>
         <div className="form-group row">
@@ -142,9 +138,7 @@ function Signup() {
               value={email}
               onChange={event => setEmail(event.target.value)}
             />
-            {emailErr && (
-              <span className="text-danger">enter valid email address</span>
-            )}
+            {emailErr && <span className="text-danger">enter valid email address</span>}
           </div>
         </div>
         <div className="form-group row">
@@ -165,9 +159,7 @@ function Signup() {
                 }
               }}
             />
-            {ageErr && (
-              <span className="text-danger">age should not be empty </span>
-            )}
+            {ageErr && <span className="text-danger">age should not be empty </span>}
           </div>
         </div>
         <div className="form-group row">
@@ -190,8 +182,7 @@ function Signup() {
             />
             {mobileNumberErr && (
               <span className="text-danger">
-                mobile number should not be empty and it should contain only
-                digits
+                mobile number should not be empty and it should contain only digits
               </span>
             )}
           </div>
@@ -210,15 +201,9 @@ function Signup() {
               value={password}
               onChange={event => setPassword(event.target.value)}
             />
-            {passwordErr && (
-              <span className="text-danger">password should be valid</span>
-            )}
+            {passwordErr && <span className="text-danger">password should be valid</span>}
             <div className="showPasswordWrapper d-flex align-items-center">
-              <input
-                className="cursor-pointer"
-                type="checkbox"
-                onClick={showPassword}
-              />
+              <input className="cursor-pointer" type="checkbox" onClick={showPassword} />
               <span>show password</span>
             </div>
           </div>
@@ -236,9 +221,7 @@ function Signup() {
               value={confirmPassword}
               onChange={event => setConfirmPassword(event.target.value)}
             />
-            {passwordMatchErr && (
-              <span className="text-danger">Password should be same </span>
-            )}
+            {passwordMatchErr && <span className="text-danger">Password should be same </span>}
           </div>
         </div>
       </form>
@@ -249,6 +232,9 @@ function Signup() {
         <button className="btn btn-warning col-sm-3" onClick={resetForm}>
           Reset
         </button>
+        <p>
+          Already have account? <Link to="/login">Login</Link>
+        </p>
       </div>
     </div>
   );
