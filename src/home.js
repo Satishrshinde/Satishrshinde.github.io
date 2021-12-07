@@ -1,20 +1,37 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import ReactStars from "react-stars";
+import ReactTooltip from "react-tooltip";
 import { clothsData, numberArray, personArray } from "./data";
 
 function Home() {
   function listingCloths() {
-    return clothsData.map(function (clothing) {
+    return clothsData.map(function (clothing, key) {
       return (
-        <div className="col-sm-4">
-          <div class="card">
-            <img class="card-img-top" src={clothing.image} alt={""} />
-            <div class="card-body">
-              <h3 class="card-title"> {clothing.title}</h3>
-              <p class="card-text">{clothing.description}</p>
-              <p>{clothing.price}</p>
-              <h4>{clothing.catogory}</h4>
-              <p>{clothing.rating.count}</p>
+        <div className="col-sm-4 clothingColum">
+          <div className="card text-center">
+            <div className="imageWrapper">
+              <img className="card-img-top" src={clothing.image} alt={""} />
+            </div>
+            <div className="card-body">
+              <h3 className="card-title overflow">{clothing.title}</h3>
+              <p data-tip data-for={`description${key}`} className="card-text overflow">
+                {clothing.description}
+              </p>
+              <ReactTooltip id={`description${key}`} place="top" effect="solid">
+                {clothing.description}
+              </ReactTooltip>
+              <h3 classname="">Price: {clothing.price}Rs</h3>
+              <h4>Category : {clothing.category}</h4>
+              <button className="btn redBtn ">ADD TO CART</button>
+              <div className="d-flex justify-content-center">
+                <ReactStars
+                  count={clothing.rating.rate}
+                  size={24}
+                  color1={"#ffd700"}
+                  color2={"#ffd700"}
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -36,8 +53,7 @@ function Home() {
       );
     });
   }
-  const data = "name";
-  console.log(data);
+
   return (
     <div className="container">
       <div className="row d-none">
