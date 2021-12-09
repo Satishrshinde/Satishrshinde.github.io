@@ -4,19 +4,26 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Signup from "./signup";
 import Login from "./login";
 import Home from "./home";
+import Header from "./Header";
+import NotFound from "./NotFound";
+import UseMapFilter from "./useMap_Filter";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./index.css";
 import "./App.css";
 
 const Routing = () => {
   return (
-    <Router>
-      <Routes>
-        <Route exact path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
-      </Routes>
-    </Router>
+    <>
+      <Router>
+        <Header />
+        <Routes>
+          <Route exact path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/mapfilter" element={<UseMapFilter />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </Router>
+    </>
   );
 };
 

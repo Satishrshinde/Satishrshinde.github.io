@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import "./login.css";
 
 function Login() {
   const [emailid, setEmailid] = useState("");
@@ -33,44 +34,48 @@ function Login() {
 
   return (
     <div className="container text-left">
-      <h1>Log in</h1>
-      <form>
-        <div className="form-group row">
-          <label className="col-sm-3 col-form-label">Email</label>
-          <div className="col-sm-9">
-            <input
-              type="text"
-              className="form-control"
-              placeholder="Email"
-              value={emailid}
-              onChange={event => setEmailid(event.target.value)}
-            />
-            {emailidErr && <span className="text-danger text-left posAbsolute">Invalid email</span>}
+      <div className="loginContainer mx-auto">
+        <h1>Log in</h1>
+        <form>
+          <div className="form-group row">
+            <label className="col-sm-3 col-form-label">Email</label>
+            <div className="col-sm-9">
+              <input
+                type="text"
+                className="form-control"
+                placeholder="Email"
+                value={emailid}
+                onChange={event => setEmailid(event.target.value)}
+              />
+              {emailidErr && (
+                <span className="text-danger text-left posAbsolute">Invalid email</span>
+              )}
+            </div>
           </div>
-        </div>
-        <div className="form-group row">
-          <label className="col-sm-3 col-form-label">Password</label>
-          <div className="col-sm-9">
-            <input
-              type="password"
-              className="form-control"
-              placeholder="Password"
-              value={password}
-              onChange={event => setPassWord(event.target.value)}
-            />
-            {passwordErr && (
-              <span className="text-danger text-left posAbsolute">invalid password</span>
-            )}
+          <div className="form-group row">
+            <label className="col-sm-3 col-form-label">Password</label>
+            <div className="col-sm-9">
+              <input
+                type="password"
+                className="form-control"
+                placeholder="Password"
+                value={password}
+                onChange={event => setPassWord(event.target.value)}
+              />
+              {passwordErr && (
+                <span className="text-danger text-left posAbsolute">invalid password</span>
+              )}
+            </div>
           </div>
+        </form>
+        <div className="text-center">
+          <button className="btn btn-primary " onClick={handleSubmit}>
+            Log In
+          </button>
+          <p>
+            Create New Account? <Link to="/signup">Sign up</Link>
+          </p>
         </div>
-      </form>
-      <div className="text-center">
-        <button className="btn btn-primary " onClick={handleSubmit}>
-          Log In
-        </button>
-        <p>
-          Create New Account? <Link to="/signup">Sign up</Link>
-        </p>
       </div>
     </div>
   );
