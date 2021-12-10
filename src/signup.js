@@ -70,7 +70,7 @@ function Signup() {
     } else {
       setAgeErr(false);
     }
-    if (mobileNumber === "") {
+    if (mobileNumber === "" || mobileNumber.length < 10) {
       setMobileNumberErr(true);
     } else {
       setMobileNumberErr(false);
@@ -90,6 +90,25 @@ function Signup() {
       setEmailErr(true);
     } else {
       setEmailErr(false);
+    }
+    // alert you are signed up
+    if (
+      firstName !== "" &&
+      lastName !== "" &&
+      email !== "" &&
+      age !== "" &&
+      mobileNumber !== "" &&
+      mobileNumber.length === 10 &&
+      password !== "" &&
+      password.length > 8 &&
+      confirmPassword !== "" &&
+      password === confirmPassword
+    ) {
+      //
+      // go to other page
+      // API call with above data
+      // for now showing alert
+      alert("all details are correct");
     }
   }
 
@@ -184,7 +203,7 @@ function Signup() {
               />
               {mobileNumberErr && (
                 <span className="text-danger">
-                  mobile number should not be empty and it should contain only digits
+                  mobile number should not be empty and it should be 10 digit numerics.
                 </span>
               )}
             </div>
