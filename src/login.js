@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./login.css";
 
 function Login() {
@@ -7,6 +7,7 @@ function Login() {
   const [password, setPassWord] = useState("");
   const [emailidErr, setEmailidErr] = useState(false);
   const [passwordErr, setPasswordErr] = useState(false);
+  const navigate = useNavigate();
 
   function validateEmail(email) {
     const re = /\S+@\S+\.\S+/;
@@ -30,6 +31,10 @@ function Login() {
     } else {
       setEmailidErr(false);
     }
+    if (emailid !== "" && password !== "" && isValidEmail) {
+      navigate("/");
+      // window.location.href = "/"; we can use this method as well but we dont to reload page in react
+    }
   }
 
   return (
@@ -42,7 +47,7 @@ function Login() {
             <div className="col-sm-9">
               <input
                 type="text"
-                className="form-control"
+                className={`form-control ${emailidErr ? "redBorder" : ""}`}
                 placeholder="Email"
                 value={emailid}
                 onChange={event => setEmailid(event.target.value)}
@@ -57,7 +62,7 @@ function Login() {
             <div className="col-sm-9">
               <input
                 type="password"
-                className="form-control"
+                className={`form-control ${passwordErr ? "redBorder" : ""}`}
                 placeholder="Password"
                 value={password}
                 onChange={event => setPassWord(event.target.value)}

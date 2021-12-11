@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./signup.css";
 
 function Signup() {
@@ -18,6 +18,7 @@ function Signup() {
   const [inputPassword, setInputPassword] = useState("password");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [passwordMatchErr, setPasswordMatchErr] = useState(false);
+  const navigate = useNavigate();
 
   function resetForm() {
     setFirstName("");
@@ -70,7 +71,7 @@ function Signup() {
     } else {
       setAgeErr(false);
     }
-    if (mobileNumber === "") {
+    if (mobileNumber === "" || mobileNumber.length < 10) {
       setMobileNumberErr(true);
     } else {
       setMobileNumberErr(false);
@@ -91,6 +92,22 @@ function Signup() {
     } else {
       setEmailErr(false);
     }
+    if (
+      firstName !== "" &&
+      lastName !== "" &&
+      email !== "" &&
+      isValidEmail &&
+      age !== "" &&
+      mobileNumber !== "" &&
+      mobileNumber.length === 10 &&
+      password !== "" &&
+      password.length > 8 &&
+      confirmPassword !== "" &&
+      password === confirmPassword
+    ) {
+      navigate("/");
+      // window.location.href = "/"; we can use this method as well but we dont to reload page in react
+    }
   }
 
   return (
@@ -105,7 +122,7 @@ function Signup() {
             <div className="col-sm-9">
               <input
                 type="text"
-                className="form-control"
+                className={`form-control ${firstNameErr ? "redBorder" : ""}`}
                 placeholder="first name"
                 value={firstName}
                 onChange={event => setFirstName(event.target.value)}
@@ -120,7 +137,7 @@ function Signup() {
             <div className="col-sm-9">
               <input
                 type="text"
-                className="form-control"
+                className={`form-control ${lastNameErr ? "redBorder" : ""}`}
                 placeholder="last name"
                 value={lastName}
                 onChange={event => setLastName(event.target.value)}
@@ -135,7 +152,7 @@ function Signup() {
             <div className="col-sm-9">
               <input
                 type="text"
-                className="form-control"
+                className={`form-control ${emailErr ? "redBorder" : ""}`}
                 placeholder="email"
                 value={email}
                 onChange={event => setEmail(event.target.value)}
@@ -150,7 +167,7 @@ function Signup() {
             <div className="col-sm-9">
               <input
                 type="number"
-                className="form-control"
+                className={`form-control ${ageErr ? "redBorder" : ""}`}
                 placeholder="your age"
                 value={age}
                 onChange={event => {
@@ -171,7 +188,7 @@ function Signup() {
             <div className="col-sm-9">
               <input
                 type="number"
-                className="form-control"
+                className={`form-control ${mobileNumberErr ? "redBorder" : ""}`}
                 placeholder="mobile number"
                 value={mobileNumber}
                 onChange={event => {
@@ -184,7 +201,7 @@ function Signup() {
               />
               {mobileNumberErr && (
                 <span className="text-danger">
-                  mobile number should not be empty and it should contain only digits
+                  mobile number should not be empty and it should be 10 digit numerics.
                 </span>
               )}
             </div>
@@ -197,7 +214,7 @@ function Signup() {
             <div className="col-sm-9">
               <input
                 type={inputPassword}
-                className="form-control"
+                className={`form-control ${passwordErr ? "redBorder" : ""}`}
                 placeholder="Password"
                 id="passcode"
                 value={password}
@@ -217,7 +234,7 @@ function Signup() {
             </label>
             <div className="col-sm-9">
               <input
-                className="form-control"
+                className={`form-control ${passwordMatchErr ? "redBorder" : ""}`}
                 placeholder="Re-enter Password"
                 type="text"
                 value={confirmPassword}
