@@ -9,6 +9,7 @@ function TodoApp() {
   const [taskData, setTaskData] = useState([]);
 
   function handleSubmit() {
+    // if input value is empty then show error
     if (inputValue === "") {
       setInputValueErr(true);
     } else {
@@ -53,6 +54,7 @@ function TodoApp() {
   }
 
   function getFilteredTask(isChecked) {
+    //
     return taskData.filter(function (item) {
       return item.isChecked === isChecked;
     });
