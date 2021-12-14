@@ -3,8 +3,8 @@ import { numberArray, personArray, viewers } from "./data";
 
 function UseMapFilter() {
   function printNumbers(inputArray) {
-    return inputArray.map(function (num) {
-      return <p>{num}</p>;
+    return inputArray.map(function (num, key) {
+      return <p key={key}>{num}</p>;
     });
   }
 
@@ -20,6 +20,29 @@ function UseMapFilter() {
     });
   }
 
+  function removeName(nameToRemove) {
+    const personArray = [
+      { name: "vishal", age: 28 },
+      { name: "test", age: 23 },
+      { name: "satish", age: 23 },
+      { name: "harsh", age: 23 }
+    ];
+    return personArray.filter(function (data) {
+      return data.name !== nameToRemove;
+    });
+  }
+
+  removeName("vishal");
+
+  function removePerticularValue(removeValue) {
+    const array = [23, 3, 43, 32, 3, 3];
+    return array.filter(function (num) {
+      return num !== removeValue;
+    });
+  }
+
+  removePerticularValue(3);
+
   function filterPersonArray() {
     return personArray.filter(function (info) {
       return info.age > 24;
@@ -27,9 +50,9 @@ function UseMapFilter() {
   }
 
   function printPersonData(inputArray) {
-    return inputArray.map(function (info) {
+    return inputArray.map(function (info, key) {
       return (
-        <li>
+        <li key={key}>
           <p>{info.name}</p>
           <p>{info.age}</p>
         </li>
