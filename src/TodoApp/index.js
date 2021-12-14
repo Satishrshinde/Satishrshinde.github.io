@@ -40,7 +40,7 @@ function TodoApp() {
       return (
         <li key={key} className={`list-group-item ${task.isChecked ? "completed" : ""}`}>
           <div id={task.id} className="d-flex align-items-center">
-            <div className="col-sm-9">
+            <div className="col-sm-10">
               <input
                 className="cursor-pointer mx-2"
                 type="checkbox"
