@@ -21,6 +21,7 @@ module.exports = {
   },
   plugins: ["react"],
   rules: {
-    "no-console": "off"
+    "no-console": "off",
+    "no-unused-vars": "off"
   }
 };
