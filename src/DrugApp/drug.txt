@@ -1,0 +1,22 @@
+import data -done
+log imported data - done
+variables needed to map data 
+
+const [drugData, setDrugData] = useState("");
+ 
+ // drugData => it will data 
+ // setDrugData => method used to change drugData value 
+ // value inside () inside useState is initial value of the variable
+
+initial value will be []array 
+name of variable will be drug data
+
+map data 
+
+
+filtering  data
+dont show drug whose price is more than $10.
+ => filter drugData array and set new Value inside drugData using setDrugData method 
+
+
+
