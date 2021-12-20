@@ -1,9 +1,20 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState} from "react";
 import ReactStars from "react-stars";
 import ReactTooltip from "react-tooltip";
-import { clothsData } from "./data";
 
 function Home() {
+  const [clothsData, setClothData] = useState([]);
+  
+  async function loadUsers(){ 
+    const result = await axios.get("http://localhost:3003/cloths");
+    setClothData(result.data);
+  }
+  
+  useEffect(function() { // this will run only once on file load 
+    loadUsers();
+  },[]);
+
   function listingCloths() {
     return clothsData.map(function (clothing, key) {
       return (
