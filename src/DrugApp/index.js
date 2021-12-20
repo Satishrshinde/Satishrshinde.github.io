@@ -5,6 +5,7 @@ import { drugSavings, BESTCOUNT } from "../data";
 function DrugApp() {
   // this is react variable and its method
   const [drugData, setDrugData] = useState(drugSavings);
+
   function printDrugData() {
     return drugData.map(function (info, key) {
       return (
@@ -27,6 +28,7 @@ function DrugApp() {
       );
     });
   }
+  
   function filterData() {
     // newData is local variable
     const newData = drugData.filter(function (info) {
