@@ -16,7 +16,7 @@
     "react-tooltip": "^4.2.21"
   },
   "scripts": {
-    "start": "cross-env REACT_APP_ENV=development && npm run lint && react-scripts start",
+    "start": "react-scripts start",
     "json-server": "json-server --watch db.json --port 3003",
     "build": "cross-env REACT_APP_ENV=production react-scripts build",
     "lint": "./node_modules/.bin/eslint --ext=js --ext=jsx ."
