@@ -11,6 +11,7 @@ function TodoApp() {
   const [editTaskId, setEditTaskId] = useState("");
   const [inputValueErr, setInputValueErr] = useState(false);
   const [taskData, setTaskData] = useState([]);
+  
   async function loadTodo() {
     const result = await axios.get(API.TODO_END_POINT);
     setTaskData(result.data);
@@ -148,20 +149,18 @@ function TodoApp() {
       );
     });
   }
-  async function deleteTask(currentClickedItemId) {
+
+  async function handleDelete(currentClickedItemId) {
+    //api call and send currentclickeditemid
     const result = await axios.delete(`${API.TODO_END_POINT}/${currentClickedItemId}`);
     loadTodo();
-  }
-  function handleDelete(currentClickedItemId) {
-    //api call and send currentclickeditemid
-    deleteTask(currentClickedItemId);
+  
     // const filteredArray = taskData.filter(function (data) {
     //   return data.id !== currentClickedItemId;
     // });
     // setTaskData(filteredArray);
   }
   async function handleDeleteAll() {
-    await axios.delete(`TODO_END_POINT/`);
     setTaskData([]);
   }
   function getFilteredTask(isChecked) {
