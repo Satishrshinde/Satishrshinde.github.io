@@ -8,6 +8,7 @@ import Header from "./Header";
 import NotFound from "./NotFound";
 import TodoApp from "./TodoApp";
 import UseMapFilter from "./useMap_Filter";
+import GroceryApp from "./GroceryApp";
 // import DrugApp from "./DrugApp";
 // import DrugImages from "./image";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -24,6 +25,8 @@ const Routing = () => {
           <Route path="/signup" element={<Signup />} />
           <Route path="/mapfilter" element={<UseMapFilter />} />
           <Route path="/todoapp" element={<TodoApp />} />
+          <Route path="/grocery" element={<GroceryApp />} />
+
           {/* <Route path="/drugapp" element={<DrugApp />} />
           <Route path="/drugimages" element={<DrugImages />} /> */}
           <Route path="*" element={<NotFound />} />
