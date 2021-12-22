@@ -36,16 +36,16 @@ function GroceryApp() {
   }
 
   // same function using lodash library
-  function handleAddToCart(item) {
-    let oldCartList = [...cartData];
-    // if new Item does not exist in old array then only push it
-    // otherwise do not push it
-    oldCartList.push(item);
-    oldCartList = _.uniq(oldCartList, function (foodItem) {
-      return foodItem.name;
-    });
-    setCartData(oldCartList);
-  }
+  // function handleAddToCart(item) {
+  //   let oldCartList = [...cartData];
+  //   // if new Item does not exist in old array then only push it
+  //   // otherwise do not push it
+  //   oldCartList.push(item);
+  //   oldCartList = _.uniq(oldCartList, function (foodItem) {
+  //     return foodItem.name;
+  //   });
+  //   setCartData(oldCartList);
+  // }
 
   function handleCounterClick(currentClickedItemId, action, foodWeight) {
     if (action === "minus" && foodWeight === 1) {
