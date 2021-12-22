@@ -164,13 +164,13 @@ function GroceryApp() {
       <div className="row">
         <div className="col-sm-8">
           <div className="searchBar d-flex align-items-center">
-            <span className="col-sm-4 result">{foodData.length} products found</span>
             <input
               type="text"
               className="form-control"
               placeholder="search products"
               onChange={event => getFruits(event.target.value)}
             />
+            <span className="col-sm-3 ms-3 white">{foodData.length} products found</span>
           </div>
           <ul className="row groceryItemsList p-0">{printFoodItems()}</ul>
         </div>
