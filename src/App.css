@@ -99,3 +99,13 @@ input[type="number"] {
 .redBorder {
   border: 1px solid red;
 }
+li {
+  list-style-type: none;
+}
+
+iframe {
+  display: none;
+}
+.flex-1 {
+  flex: 1;
+}
