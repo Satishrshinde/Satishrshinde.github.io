@@ -13,10 +13,13 @@ function Header() {
             Login
           </Link>
           <Link className="btn btn-success m-3" to="/">
-            Clothing App
+            Cloth Store
           </Link>
           <Link className="btn btn-dark m-3" to="/todoapp">
             Todo App
+          </Link>
+          <Link className="btn btn-danger m-3" to="/grocery">
+            Grocery App
           </Link>
         </div>
       </div>
