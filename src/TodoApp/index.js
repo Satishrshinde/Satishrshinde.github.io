@@ -5,13 +5,15 @@ import "react-tabs/style/react-tabs.css";
 import "./index.css";
 const { API } = require("../config/" + process.env.NODE_ENV);
 
+// console.log("environment", process.env.NODE_ENV);
+
 function TodoApp() {
   const [inputValue, setInputValue] = useState("");
   const [editInputValue, setEditInputValue] = useState("");
   const [editTaskId, setEditTaskId] = useState("");
   const [inputValueErr, setInputValueErr] = useState(false);
   const [taskData, setTaskData] = useState([]);
-  
+
   async function loadTodo() {
     const result = await axios.get(API.TODO_END_POINT);
     setTaskData(result.data);
@@ -154,7 +156,7 @@ function TodoApp() {
     //api call and send currentclickeditemid
     const result = await axios.delete(`${API.TODO_END_POINT}/${currentClickedItemId}`);
     loadTodo();
-  
+
     // const filteredArray = taskData.filter(function (data) {
     //   return data.id !== currentClickedItemId;
     // });
@@ -208,10 +210,10 @@ function TodoApp() {
       </div>
       <div className="row justify-content-center">
         <Tabs className="tabWrapper col-sm-6">
-          <TabList class="row">
-            <Tab class="col-sm-3">All Tasks ({taskData.length})</Tab>
-            <Tab class="col-sm-3">Active Tasks</Tab>
-            <Tab class="col-sm-3">completed Tasks</Tab>
+          <TabList className="row">
+            <Tab className="col-sm-3">All Tasks ({taskData.length})</Tab>
+            <Tab className="col-sm-3">Active Tasks</Tab>
+            <Tab className="col-sm-3">completed Tasks</Tab>
           </TabList>
 
           <TabPanel>

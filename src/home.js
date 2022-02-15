@@ -2,12 +2,13 @@ import axios from "axios";
 import React, { useEffect, useState} from "react";
 import ReactStars from "react-stars";
 import ReactTooltip from "react-tooltip";
+const { API } = require("./config/" + process.env.NODE_ENV);
 
 function Home() {
   const [clothsData, setClothData] = useState([]);
   
   async function loadUsers(){ 
-    const result = await axios.get("http://localhost:3003/cloths");
+    const result = await axios.get(API.CLOTH_END_POINT);
     setClothData(result.data);
   }
   

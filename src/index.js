@@ -7,8 +7,10 @@ import Home from "./home";
 import Header from "./Header";
 import NotFound from "./NotFound";
 import TodoApp from "./TodoApp";
-import UseMapFilter from "./useMap_Filter";
+// import UseMapFilter from "./useMap_Filter";
 import GroceryApp from "./GroceryApp";
+import StringFunction from "./string_code";
+import Patterns from "./Patterns";
 // import DrugApp from "./DrugApp";
 // import DrugImages from "./image";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -23,9 +25,11 @@ const Routing = () => {
           <Route exact path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
-          <Route path="/mapfilter" element={<UseMapFilter />} />
+          {/* <Route path="/mapfilter" element={<UseMapFilter />} /> */}
           <Route path="/todoapp" element={<TodoApp />} />
           <Route path="/grocery" element={<GroceryApp />} />
+          <Route path="/string" element={<StringFunction />} />
+          <Route path="/pattern" element={<Patterns />} />
 
           {/* <Route path="/drugapp" element={<DrugApp />} />
           <Route path="/drugimages" element={<DrugImages />} /> */}

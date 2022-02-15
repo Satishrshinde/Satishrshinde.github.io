@@ -22,11 +22,6 @@
     "build": "cross-env NODE_ENV=production react-scripts build",
     "lint": "./node_modules/.bin/eslint --ext=js --ext=jsx ."
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app"
-    ]
-  },
   "browserslist": {
     "production": [
       ">0.2%",

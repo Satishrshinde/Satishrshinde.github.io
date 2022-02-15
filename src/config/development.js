@@ -1,6 +1,7 @@
-const DOMAIN = "http://localhost:3003";
+const DOMAIN = "https://satish-react-app-backend.herokuapp.com";
 export const API = {
   TODO_END_POINT: `${DOMAIN}/todo`,
   CLOTH_END_POINT: `${DOMAIN}/cloths`,
-  GROCERY_END_POINT: `${DOMAIN}/grocery`
+  GROCERY_END_POINT: `${DOMAIN}/grocery`,
+  USER_END_POINT: `${DOMAIN}/users`
 };
