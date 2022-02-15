@@ -1,6 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
+import convertWeeksToDays,{convertMinuteToSeconds,person,STATES} from "./constant/index"
+// console.log(convertWeeksToDays(10))
+// console.log(person)
+// console.log(STATES);
+// console.log(convertMinuteToSeconds(5))
 function Header() {
   return (
     <div className="container">

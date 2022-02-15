@@ -1,10 +1,9 @@
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import _ from "lodash";
-import React, { useState, useEffect } from "react";
 import "./index.css";
 const { API } = require("../config/" + process.env.NODE_ENV);
 
-console.log("ENVIRONMENT", process.env);
 function GroceryApp() {
   const [foodData, setFoodData] = useState([]);
   const [initialData, setInitialData] = useState([]);
@@ -15,11 +14,18 @@ function GroceryApp() {
     setFoodData(result.data);
     setInitialData(result.data);
   }
+
+  async function loadCartData() {
+    const savedData = await axios.get(`${API.USER_END_POINT}/93`);
+    setCartData(savedData.data.cart);
+  }
+
   useEffect(function () {
     loadFoodData();
+    loadCartData();
   }, []);
 
-  function handleAddToCart(item) {
+  async function handleAddToCart(item) {
     let oldCartList = [...cartData];
     // if new Item does not exist in old array then only push it
     // otherwise do not push it
@@ -31,29 +37,25 @@ function GroceryApp() {
     });
     if (shouldAddItem) {
       oldCartList.push(item);
-      setCartData(oldCartList);
+      updateCartDataOnServer(oldCartList);
     }
   }
 
-  // same function using lodash library
-  // function handleAddToCart(item) {
-  //   let oldCartList = [...cartData];
-  //   // if new Item does not exist in old array then only push it
-  //   // otherwise do not push it
-  //   oldCartList.push(item);
-  //   oldCartList = _.uniq(oldCartList, function (foodItem) {
-  //     return foodItem.name;
-  //   });
-  //   setCartData(oldCartList);
-  // }
-
+  async function updateCartDataOnServer(updatedCartData) {
+    const result = await axios.put(`${API.USER_END_POINT}/93`, {
+      cart: updatedCartData
+    });
+    loadCartData();
+  }
   function handleCounterClick(currentClickedItemId, action, foodWeight) {
     if (action === "minus" && foodWeight === 1) {
+      // call delete item from cart Method
+
       // then remove that item from cart array using filter method.
       const remainingItems = cartData.filter(function (data, key) {
         return key !== currentClickedItemId;
       });
-      setCartData(remainingItems);
+      updateCartDataOnServer(remainingItems);
     } else {
       const result = cartData.map(function (food, key) {
         let newWeight = food.weight;
@@ -66,7 +68,7 @@ function GroceryApp() {
         }
         return { ...food, weight: newWeight };
       });
-      setCartData(result);
+      updateCartDataOnServer(result);
     }
   }
   function printCartItems() {
@@ -140,7 +142,9 @@ function GroceryApp() {
           </div>
           <p>Extra charges may apply</p>
           <div className="checkoutWrapper">
-            <button className="btn btn-success">Checkout -&gt;</button>
+            <button className="btn btn-success" onClick={() => updateCartDataOnServer(cartData)}>
+              Checkout -&gt;
+            </button>
           </div>
         </div>
       );
