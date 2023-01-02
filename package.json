@@ -1,6 +1,7 @@
 {
   "name": "my-app",
   "version": "0.1.0",
+  "homepage": "https://Satishrshinde.github.io/js-basic",
   "private": true,
   "dependencies": {
     "axios": "^0.24.0",
@@ -17,6 +18,8 @@
     "react-tooltip": "^4.2.21"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "json-server": "json-server --watch db.json --port 3003",
     "build": "cross-env NODE_ENV=production react-scripts build",
@@ -33,5 +36,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "gh-pages": "^4.0.0"
   }
 }
