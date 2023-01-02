@@ -1,6 +1,6 @@
 ## Basic Login and Signup Application using ReactJs
 
-## Live URL => https://satish-web-portfolio.herokuapp.com/#
+## Live URL => https://satishrshinde.github.io/grocery
 
 
 ## Available Scripts
