@@ -59,8 +59,9 @@ input[type="number"] {
   border-radius: 5px;
 }
 .redBtn:hover {
-  color: #fff;
   border: 1px solid #fff;
+  background: #dd216b;
+  color: #fff;
 }
 
 .imageWrapper {

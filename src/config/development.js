@@ -1,4 +1,4 @@
-const DOMAIN = "https://satish-react-app-backend.herokuapp.com";
+const DOMAIN = "https://database-bice.vercel.app";
 export const API = {
   TODO_END_POINT: `${DOMAIN}/todo`,
   CLOTH_END_POINT: `${DOMAIN}/cloths`,

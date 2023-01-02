@@ -22,7 +22,7 @@ const Routing = () => {
       <Router>
         <Header />
         <Routes>
-          <Route exact path="/" element={<Home />} />
+          <Route exact path="/shop" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           {/* <Route path="/mapfilter" element={<UseMapFilter />} /> */}

@@ -16,7 +16,7 @@ function Header() {
           <Link className="btn btn-warning m-3" to="/login">
             Login
           </Link>
-          <Link className="btn btn-success m-3" to="/">
+          <Link className="btn btn-success m-3" to="/shop">
             Cloth Store
           </Link>
           <Link className="btn btn-dark m-3" to="/todoapp">
